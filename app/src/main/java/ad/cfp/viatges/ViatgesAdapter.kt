@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ViatgesAdapter(val llista: List<Viatge>) : RecyclerView.Adapter<ViatgesAdapter.ViewHolder>() {
+class ViatgesAdapter(
+    val llista: List<Viatge>,
+    val listener: ViatgesAdapterActions
+) : RecyclerView.Adapter<ViatgesAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,10 +29,13 @@ class ViatgesAdapter(val llista: List<Viatge>) : RecyclerView.Adapter<ViatgesAda
 
     class ViewHolder(val binding: ViatgeItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(viatge: Viatge) {
+
             binding.preu.text = "${viatge.preu} €"
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
+
+
         }
 
         companion object {
@@ -43,7 +49,9 @@ class ViatgesAdapter(val llista: List<Viatge>) : RecyclerView.Adapter<ViatgesAda
     }
 }
 
-
+interface ViatgesAdapterActions {
+    fun click(viatge: Viatge)
+}
 
 
 

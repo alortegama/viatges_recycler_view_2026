@@ -20,7 +20,7 @@ class ViatgesAdapter(
         holder: ViewHolder,
         position: Int
     ) {
-        holder.bind(llista[position])
+        holder.bind(llista[position], listener)
     }
 
     override fun getItemCount(): Int {
@@ -28,13 +28,16 @@ class ViatgesAdapter(
     }
 
     class ViewHolder(val binding: ViatgeItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(viatge: Viatge) {
+        fun bind(viatge: Viatge, listener: ViatgesAdapterActions) {
 
             binding.preu.text = "${viatge.preu} €"
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
 
+            binding.root.setOnClickListener {
+                listener.click(viatge)
+            }
 
         }
 

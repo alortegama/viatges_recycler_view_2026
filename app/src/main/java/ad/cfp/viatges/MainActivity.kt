@@ -1,6 +1,7 @@
 package ad.cfp.viatges
 
 import ad.cfp.viatges.databinding.ActivityMainBinding
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -48,5 +49,8 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
                 Snackbar.LENGTH_SHORT
             )
             .show()
+
+        val i = Intent(this, MainActivity::class.java)
+        i.putExtra("viatge",viatge)
     }
 }

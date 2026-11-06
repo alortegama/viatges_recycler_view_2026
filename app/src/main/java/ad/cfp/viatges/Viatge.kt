@@ -1,5 +1,9 @@
 package ad.cfp.viatges
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Viatge(
     val id: Int,
     val destinacio: String,
@@ -7,4 +11,4 @@ data class Viatge(
     val dataTornada: String,
     val preu: Double,
     val imatge: String
-)
+): Parcelable

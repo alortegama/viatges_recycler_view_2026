@@ -11,4 +11,4 @@ data class Viatge(
     val dataTornada: String,
     val preu: Double,
     val imatge: String
-): Parcelable
+) : Parcelable

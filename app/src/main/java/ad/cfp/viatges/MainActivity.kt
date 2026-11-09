@@ -1,6 +1,7 @@
 package ad.cfp.viatges
 
 import ad.cfp.viatges.databinding.ActivityMainBinding
+import ad.cfp.viatges.ui.DetallViatgeActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -50,7 +51,11 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
             )
             .show()
 
-        val i = Intent(this, MainActivity::class.java)
-        i.putExtra("viatge",viatge)
+        val intent = Intent(
+            this,
+            DetallViatgeActivity::class.java
+        )
+        intent.putExtra("viatge", viatge)
+        startActivity(intent)
     }
 }

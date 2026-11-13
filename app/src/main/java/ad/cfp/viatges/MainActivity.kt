@@ -13,6 +13,10 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viatges: MutableList<Viatge>
+    private lateinit var viatgesAdapter: ViatgesAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val viatges = listOf(
+        viatges = mutableListOf(
             Viatge(1, "París", "2026-11-01", "2026-11-05", 450.0, "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/960px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"),
             Viatge(2, "Roma", "2026-11-10", "2026-11-14", 380.0, "https://www.turismoroma.it/sites/default/files/Roma%20in%20breve.jpg"),
             Viatge(3, "Londres", "2026-12-01", "2026-12-06", 520.0, "https://cdn2.civitatis.com/reino-unido/londres/guia/londres-nuit?aid=804&guide_id=5"),
@@ -35,7 +39,7 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
             Viatge(9, "Atenes", "2027-06-10", "2027-06-17", 640.0, "atenes.jpg"),
             Viatge(10, "Bali", "2027-07-01", "2027-07-12", 1490.0, "bali.jpg")
         )
-        val viatgesAdapter = ViatgesAdapter(viatges, this)
+        viatgesAdapter = ViatgesAdapter(viatges, this)
         binding.rv.apply {
             adapter = viatgesAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -43,19 +47,24 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
     }
 
     override fun click(viatge: Viatge) {
-        Snackbar
-            .make(
-                binding.root,
-                viatge.destinacio,
-                Snackbar.LENGTH_SHORT
-            )
-            .show()
-
         val intent = Intent(
             this,
             DetallViatgeActivity::class.java
         )
         intent.putExtra("viatge", viatge)
         startActivity(intent)
+    }
+
+    override fun delete(id: Int, pos: Int) {
+        viatges.removeIf { viatge -> viatge.id == id }
+        viatgesAdapter.notifyItemRemoved(pos)
+    }
+
+    override fun favorite(id: Int, pos: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun add(viatge: Viatge) {
+        TODO("Not yet implemented")
     }
 }

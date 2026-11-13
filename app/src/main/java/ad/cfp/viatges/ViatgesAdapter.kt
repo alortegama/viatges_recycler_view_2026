@@ -37,7 +37,15 @@ class ViatgesAdapter(
             binding.dataTornada.text = viatge.dataTornada
             Glide.with(binding.root.context)
                 .load(viatge.imatge)
-                .thumbnail(Glide.with(binding.root.context).load(R.drawable.loading_gif))
+                .error(
+                    Glide.with(binding.root.context)
+                        .load(R.drawable.error_image)
+                )
+                .thumbnail(
+                    Glide.with(binding.root.context)
+                        .load(R.drawable.pacman_loading)
+
+                )
                 .into(binding.imatge)
 
 
@@ -60,6 +68,9 @@ class ViatgesAdapter(
 
 interface ViatgesAdapterActions {
     fun click(viatge: Viatge)
+    fun delete(id: Int, pos: Int)
+    fun favorite(id: Int, pos: Int)
+    fun add(viatge: Viatge)
 }
 
 

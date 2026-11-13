@@ -4,6 +4,7 @@ import ad.cfp.viatges.databinding.ViatgeItemBinding
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class ViatgesAdapter(
     val llista: List<Viatge>,
@@ -34,6 +35,11 @@ class ViatgesAdapter(
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
+            Glide.with(binding.root.context)
+                .load(viatge.imatge)
+                .thumbnail(Glide.with(binding.root.context).load(R.drawable.loading_gif))
+                .into(binding.imatge)
+
 
             binding.root.setOnClickListener {
                 listener.click(viatge)

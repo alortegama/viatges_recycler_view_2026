@@ -56,6 +56,10 @@ class ViatgesAdapter(
                 listener.delete(viatge.id,bindingAdapterPosition)
             }
 
+            binding.preferit.setOnClickListener {
+                listener.favorite(viatge.id,bindingAdapterPosition)
+            }
+
         }
 
         companion object {

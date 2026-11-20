@@ -52,6 +52,9 @@ class ViatgesAdapter(
             binding.root.setOnClickListener {
                 listener.click(viatge)
             }
+            binding.delete.setOnClickListener {
+                listener.delete(viatge.id,bindingAdapterPosition)
+            }
 
         }
 

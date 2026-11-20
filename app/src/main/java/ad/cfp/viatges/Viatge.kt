@@ -10,5 +10,6 @@ data class Viatge(
     val dataSortida: String,
     val dataTornada: String,
     val preu: Double,
-    val imatge: String
+    val imatge: String,
+    var preferit:Boolean = false
 ) : Parcelable

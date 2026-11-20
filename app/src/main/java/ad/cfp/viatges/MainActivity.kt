@@ -28,10 +28,38 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
             insets
         }
         viatges = mutableListOf(
-            Viatge(1, "París", "2026-11-01", "2026-11-05", 450.0, "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/960px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"),
-            Viatge(2, "Roma", "2026-11-10", "2026-11-14", 380.0, "https://www.turismoroma.it/sites/default/files/Roma%20in%20breve.jpg"),
-            Viatge(3, "Londres", "2026-12-01", "2026-12-06", 520.0, "https://cdn2.civitatis.com/reino-unido/londres/guia/londres-nuit?aid=804&guide_id=5"),
-            Viatge(4, "Tòquio", "2027-01-15", "2027-01-25", 1850.0, "https://s3.eu-west-1.amazonaws.com/ryo-prod-public-398019065442/public_endroits_manga_tokyo_fans_poster_es_e142b9f354.jpg"),
+            Viatge(
+                1,
+                "París",
+                "2026-11-01",
+                "2026-11-05",
+                450.0,
+                "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/960px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"
+            ),
+            Viatge(
+                2,
+                "Roma",
+                "2026-11-10",
+                "2026-11-14",
+                380.0,
+                "https://www.turismoroma.it/sites/default/files/Roma%20in%20breve.jpg"
+            ),
+            Viatge(
+                3,
+                "Londres",
+                "2026-12-01",
+                "2026-12-06",
+                520.0,
+                "https://cdn2.civitatis.com/reino-unido/londres/guia/londres-nuit?aid=804&guide_id=5"
+            ),
+            Viatge(
+                4,
+                "Tòquio",
+                "2027-01-15",
+                "2027-01-25",
+                1850.0,
+                "https://s3.eu-west-1.amazonaws.com/ryo-prod-public-398019065442/public_endroits_manga_tokyo_fans_poster_es_e142b9f354.jpg"
+            ),
             Viatge(5, "Nova York", "2027-02-05", "2027-02-12", 1250.0, "nova_york.jpg"),
             Viatge(6, "Barcelona", "2027-03-10", "2027-03-13", 220.0, "barcelona.jpg"),
             Viatge(7, "Lisboa", "2027-04-01", "2027-04-05", 310.0, "lisboa.jpg"),
@@ -61,7 +89,18 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
     }
 
     override fun favorite(id: Int, pos: Int) {
-        TODO("Not yet implemented")
+        /*
+            val viatge = viatges.find { viatge -> viatge.id == id }!!
+            val listPos = viatges.lastIndexOf(viatge)
+            viatge.preferit = !viatge.preferit
+            viatges[listPos] = viatge
+            viatgesAdapter.notifyItemChanged(pos)
+        */
+        viatges.find { viatge -> viatge.id == id }!!.apply {
+            preferit = !preferit
+            viatgesAdapter.notifyItemChanged(pos)
+        }
+
     }
 
     override fun add(viatge: Viatge) {

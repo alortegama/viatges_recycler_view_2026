@@ -64,6 +64,13 @@
             android:text="Eliminar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/preu" />
+        <Button
+            android:id="@+id/preferit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="preferit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

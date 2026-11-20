@@ -1,6 +1,7 @@
 package ad.cfp.viatges
 
 import ad.cfp.viatges.databinding.ViatgeItemBinding
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,16 @@ class ViatgesAdapter(
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
+            if (viatge.preferit){
+                binding.preferit.setBackgroundColor(
+                    binding.root.context.getResources()
+                        .getColor(R.color.favorite))
+
+            }else{
+                binding.preferit.setBackgroundColor(
+                    binding.root.context.getResources()
+                        .getColor(R.color.white))
+            }
             Glide.with(binding.root.context)
                 .load(viatge.imatge)
                 .error(

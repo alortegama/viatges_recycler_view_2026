@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">viatges</string>
+    <string name="viatge_preu">%1$s €</string>
 </resources>

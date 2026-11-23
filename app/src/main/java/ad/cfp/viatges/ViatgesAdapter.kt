@@ -31,12 +31,20 @@ class ViatgesAdapter(
     class ViewHolder(val binding: ViatgeItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(viatge: Viatge, listener: ViatgesAdapterActions) {
 
-            binding.preu.text = "${viatge.preu} €"
+            binding.preu.text =
+                binding.root.context.getString(
+                    R.string.viatge_preu,
+                    viatge.preu.toString()
+                )
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
-            val color = if (viatge.preferit) R.color.preferit else R.color.black
+
+            val color = if (viatge.preferit) R.color.preferit
+                        else R.color.black
             binding.preferit.setIconTintResource(color)
+
+
 
             Glide.with(binding.root.context)
                 .load(viatge.imatge)

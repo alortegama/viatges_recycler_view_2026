@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), ViatgesAdapterActions {
         viatgesAdapter.notifyItemRemoved(pos)
     }
 
-    override fun favorite(id: Int, pos: Int) {
+    override fun preferit(id: Int, pos: Int) {
         /*
             val viatge = viatges.find { viatge -> viatge.id == id }!!
             val listPos = viatges.lastIndexOf(viatge)

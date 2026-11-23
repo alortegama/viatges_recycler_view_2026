@@ -1,7 +1,6 @@
 package ad.cfp.viatges
 
 import ad.cfp.viatges.databinding.ViatgeItemBinding
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -36,27 +35,16 @@ class ViatgesAdapter(
             binding.destinacio.text = viatge.destinacio
             binding.dataSortida.text = viatge.dataSortida
             binding.dataTornada.text = viatge.dataTornada
-            if (viatge.preferit){
-                binding.preferit.setBackgroundColor(
-                    binding.root.context.getResources()
-                        .getColor(R.color.favorite))
+            val color = if (viatge.preferit) R.color.preferit else R.color.black
+            binding.preferit.setIconTintResource(color)
 
-            }else{
-                binding.preferit.setBackgroundColor(
-                    binding.root.context.getResources()
-                        .getColor(R.color.white))
-            }
             Glide.with(binding.root.context)
                 .load(viatge.imatge)
-                .error(
-                    Glide.with(binding.root.context)
-                        .load(R.drawable.error_image)
-                )
                 .thumbnail(
                     Glide.with(binding.root.context)
                         .load(R.drawable.pacman_loading)
-
                 )
+                .error(R.drawable.error_image)
                 .into(binding.imatge)
 
 
@@ -64,11 +52,11 @@ class ViatgesAdapter(
                 listener.click(viatge)
             }
             binding.delete.setOnClickListener {
-                listener.delete(viatge.id,bindingAdapterPosition)
+                listener.delete(viatge.id, bindingAdapterPosition)
             }
 
             binding.preferit.setOnClickListener {
-                listener.favorite(viatge.id,bindingAdapterPosition)
+                listener.preferit(viatge.id, bindingAdapterPosition)
             }
 
         }
@@ -87,7 +75,7 @@ class ViatgesAdapter(
 interface ViatgesAdapterActions {
     fun click(viatge: Viatge)
     fun delete(id: Int, pos: Int)
-    fun favorite(id: Int, pos: Int)
+    fun preferit(id: Int, pos: Int)
     fun add(viatge: Viatge)
 }
 
